@@ -4,13 +4,23 @@
     <title>Options</title>
     <script src="vendor/jquery-3.5.0.min.js"></script>
     <script src="options.js"></script>
+    <link rel="stylesheet" href="options.css" />
   </head>
   <body>
 
-  <label>
-    <input type="checkbox" id="debug">
-    Debug mode
-  </label>
+    <div class="form-group">
+      <label for="maxScannedViews">Scanned history size</label>
+      <input type="number" id="maxScannedViews" min="1" />
+      <div class="form-hint">The number of video views in your watch history scanned to calculate the charts. A larger number will make loading slower.</div>
+    </div>
+
+    <div class="form-group">
+      <label for="isDebugMode">
+        <input type="checkbox" id="isDebugMode">
+        Debug mode
+      </label>
+      <div class="form-hint">Whether to log debug messages (for developers only).</div>
+    </div>
 
   </body>
 </html>

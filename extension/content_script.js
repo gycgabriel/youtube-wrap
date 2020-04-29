@@ -1,15 +1,15 @@
 $(document).ready(function() {
 
   var config = {
-    isDebugMode: false
+    isDebugMode: false,
+    maxScannedViews: 3000
   };
   var isWatchHistory = false;
-  var maxScannedViews = 1000; // TODO make config
-  var maxChartsSize = 20; // TODO make config
-  var initialChartsSize = 3; // TODO make config
+  var maxChartsSize = 20;
+  var initialChartsSize = 3;
 
   chrome.storage.sync.get(
-    {isDebugMode: false},
+    config,
     function(items) {
       config = items;
       log('debug mode enabled');
@@ -142,13 +142,13 @@ $(document).ready(function() {
         }
 
         viewsScannedCount += views.length;
-        if (viewsScannedCount > maxScannedViews) {
-          views = views.slice(0, maxScannedViews - viewsScannedCount + views.length);
+        if (viewsScannedCount > config.maxScannedViews) {
+          views = views.slice(0, config.maxScannedViews - viewsScannedCount + views.length);
         }
         addViewCounts(viewCounts, views);
         log(`Scanned ${sections.length} sections with ${views.length} views`);
 
-        if (viewsScannedCount >= maxScannedViews) {
+        if (viewsScannedCount >= config.maxScannedViews) {
           callback(viewCounts);
           return;
         }
@@ -263,7 +263,7 @@ $(document).ready(function() {
       <div id="yc-initial-charts"></div>
       <div id="yc-rest-charts"></div>
       <div id="yc-charts-tools" style="display: none">
-        By Personal YouTube Charts, based on the last ${maxScannedViews} views in your history.
+        By Personal YouTube Charts, based on the last ${config.maxScannedViews} views in your history.
         <a id="yc-tools-more" href="#" style="display: none">show more</a>
         <a id="yc-tools-less" href="#" style="display: none">show less</a>
         <span id="yc-charts-error"></span>
