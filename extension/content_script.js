@@ -66,6 +66,9 @@ $(document).ready(function() {
       function(errorMessage) {
         log('Scan error:', errorMessage);
         renderError(container, errorMessage);
+      },
+      function(viewsCount) {
+        container.find('#yc-loading-progress').text(`${viewsCount}/${config.maxScannedViews} views`);
       }
     );
 
@@ -73,7 +76,7 @@ $(document).ready(function() {
 
   // Uses the undocumented watch history browse API to scan the watch history
   // as far back as possible or as configured.
-  function scanWatchHistory(callback, errorCallback) {
+  function scanWatchHistory(callback, errorCallback, progressCallback) {
     var ytConfig = getYtConfigValues([
       "INNERTUBE_CONTEXT_CLIENT_NAME",
       "INNERTUBE_CONTEXT_CLIENT_VERSION",
@@ -147,6 +150,7 @@ $(document).ready(function() {
         }
         addViewCounts(viewCounts, views);
         log(`Scanned ${sections.length} sections with ${views.length} views`);
+        progressCallback(viewsScannedCount);
 
         if (viewsScannedCount >= config.maxScannedViews) {
           callback(viewCounts);
@@ -254,11 +258,13 @@ $(document).ready(function() {
     chartsContainer.attr('id', 'yc-charts-container');
     chartsContainer.find("#header #title").text('Personal Charts');
     var chartsContents = chartsContainer.find("#contents");
-    // TODO include progress here?
     chartsContents.html(`
       <div id="yc-loading-content">
         <div class="yc-loading-spinner"></div>
-        <div class="yc-loading-note">Scanning your watch history...</div>
+        <div class="yc-loading-note">
+          Scanning your watch history...
+          <span id="yc-loading-progress"></span>
+        </div>
       </div>
       <div id="yc-initial-charts"></div>
       <div id="yc-rest-charts"></div>
