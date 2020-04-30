@@ -1,5 +1,5 @@
-![icon](extension/icons/icon48.png) Personal YouTube Charts
-===========================================================
+Personal YouTube Charts
+=======================
 
 Personal YouTube Charts is a Chrome extension that adds a ranking of your most viewed videos to the [watch history page](https://www.youtube.com/feed/history).
 
