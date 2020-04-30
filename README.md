@@ -32,7 +32,7 @@ Your privacy is important! We recognize that Chrome extensions are powerful and 
 
 The `extension` directory is the root for the extension code. For local development, add that directory as an unpacked extension [within Chrome](chrome://extensions/).
 
-The code necessarily depends on undocumented YouTube APIs and UI elements and may prove brittle over time. If you are experiencing problems [file an issue](https://github.com/nikhaldi/youtube-charts/issues) or (notify us)[mailto:nhaldimann@gmail.com].
+The code necessarily depends on undocumented YouTube APIs and UI elements and may prove brittle over time. If you are experiencing problems [file an issue](https://github.com/nikhaldi/youtube-charts/issues).
 
 
 ## License
