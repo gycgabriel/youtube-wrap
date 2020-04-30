@@ -1,0 +1,19 @@
+Discover your most viewed videos on YouTube!
+
+After installation visit the YouTube watch history (https://www.youtube.com/feed/history) to see your top 3 most viewed videos.  Click on "show more" below them to see your top 20 videos by personal views.
+
+Your personal chart ranking is based on the last 3000 videos in your watch history. You can change this history size in the extension's options.
+
+Because the charts are purely based on your watch history there are some quirks:
+
+- Each video is counted at most once per day - multiple views per day count as one view
+- If you watch just part of a video on one day it counts as a view - so if you watch a video over multiple days, pausing and unpausing, this will count as one view of that video for each day
+- Any video view that you remove from your watch history will also not appear in the charts
+
+This extension works with Desktop Chrome and www.youtube.com only, mobile YouTube (m.youtube.com) is not supported.
+
+Your privacy is important! The extension only requests access to www.youtube.com. It does not record or store any data from your YouTube account. It does not communicate with any server other than www.youtube.com itself.
+
+The source code for this extension is freely available at https://github.com/nikhaldi/youtube-charts
+
+This extension is not in any way affiliated with YouTube. ❤
