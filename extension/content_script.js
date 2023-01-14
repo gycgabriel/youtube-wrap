@@ -248,7 +248,7 @@ $(document).ready(function() {
     for (var i = 0; i < configVariables.length; i++) {
       var currVariable = configVariables[i];
       log(currVariable);
-      if (typeof currVariable !== 'undefined') {
+      if (typeof currVariable !== 'undefined') {    // parse json cannot parse undefined
         continue;
       }
       ret[currVariable] = $.parseJSON($("body").attr("data-" + currVariable));
