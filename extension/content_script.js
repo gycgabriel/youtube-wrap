@@ -393,3 +393,7 @@ $(document).ready(function() {
 
   setInterval(detectWatchHistory, 1000);
 });
+
+console.log("The end");
+toBeExported = $;
+if (typeof module !== 'undefined') module.exports = {data: toBeExported};
