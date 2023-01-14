@@ -228,35 +228,13 @@ $(document).ready(function() {
   function getYtConfigValues(configVariables) {
     var ret = {};
 
-    var scriptContent = "";
-    // scriptContent += "console.log(ytcfg);\n";
-    scriptContent += "console.log('GAHAHAHAHAHA');\n";
-    // for (var i = 0; i < configVariables.length; i++) {
-    //   var currVariable = configVariables[i];
-    //   scriptContent += "if (typeof ytcfg.data_." + currVariable + " !== 'undefined') document.body.setAttribute('data-" + currVariable + "', JSON.stringify(ytcfg.data_." + currVariable + "));\n"
-    // }
-
-    // Method 1: https://stackoverflow.com/a/9517879
-    var script = document.createElement('script');
-    script.src = chrome.runtime.getURL('script.js');
-    script.id = 'tmpScript';
-    script.appendChild(document.createTextNode(scriptContent));
-    (document.body || document.head || document.documentElement).appendChild(script);
-    log(script);
-
     for (var i = 0; i < configVariables.length; i++) {
-      let currVariable = configVariables[i];
-      log(currVariable);
-      log(JSON.stringify(ytcfg.data_.INNERTUBE_CONTEXT_CLIENT_NAME));
-      let t = "data-" + currVariable;
-      document.body.setAttribute(t, "HAHA");
-      log($("body").attr("data-" + currVariable));
-      ret[currVariable] = JSON.parse($("body").attr("data-" + currVariable));
+      var currVariable = configVariables[i];
+      ret[currVariable] = $.parseJSON($("body").attr("data-" + currVariable));
       $("body").removeAttr("data-" + currVariable);
     }
 
-    //$("#tmpScript").remove();
-
+    $("#tmpScript").remove();
     return ret;
   }
 
