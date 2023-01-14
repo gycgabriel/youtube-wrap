@@ -22,7 +22,8 @@
       "matches": ["https://*.youtube.com/*"],
       "run_at": "document_start",
       "css": ["content.css"],
-      "js": ["vendor/jquery-3.5.0.min.js", "content_script.js"]
+      "js": ["vendor/jquery-3.5.0.min.js", "content_script.js", "script.js"],
+      "world": "MAIN"
     }
   ],
   "options_ui": {
