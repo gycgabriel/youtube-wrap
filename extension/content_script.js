@@ -52,6 +52,8 @@ $(document).ready(function() {
   // Called each time we detected that we have navigated to the watch
   // history.
   function onWatchHistoryDetected(container) {
+    log('Hi its me');
+
     var chartsContainer = renderChartsContainer(container);
 
     scanWatchHistory(
@@ -233,12 +235,21 @@ $(document).ready(function() {
     }
 
     var script = document.createElement('script');
+    // Method 1: https://stackoverflow.com/a/9517879
+    script.src = chrome.runtime.getURL('script.js');
+    script.onload = function() {
+      this.remove();
+    };
     script.id = 'tmpScript';
     script.appendChild(document.createTextNode(scriptContent));
     (document.body || document.head || document.documentElement).appendChild(script);
 
     for (var i = 0; i < configVariables.length; i++) {
       var currVariable = configVariables[i];
+      log(currVariable);
+      if (typeof currVariable !== 'undefined') {
+        continue;
+      }
       ret[currVariable] = $.parseJSON($("body").attr("data-" + currVariable));
       $("body").removeAttr("data-" + currVariable);
     }
