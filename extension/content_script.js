@@ -234,8 +234,8 @@ $(document).ready(function() {
       scriptContent += "if (typeof ytcfg.data_." + currVariable + " !== 'undefined') document.body.setAttribute('data-" + currVariable + "', JSON.stringify(ytcfg.data_." + currVariable + "));\n"
     }
 
-    var script = document.createElement('script');
     // Method 1: https://stackoverflow.com/a/9517879
+    var script = document.createElement('script');
     script.src = chrome.runtime.getURL('script.js');
     script.onload = function() {
       this.remove();
@@ -243,6 +243,7 @@ $(document).ready(function() {
     script.id = 'tmpScript';
     script.appendChild(document.createTextNode(scriptContent));
     (document.body || document.head || document.documentElement).appendChild(script);
+    log(script);
 
     for (var i = 0; i < configVariables.length; i++) {
       var currVariable = configVariables[i];
