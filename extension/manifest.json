@@ -9,8 +9,7 @@
     "128": "icons/icon128.png"
   },
   "permissions": [
-    "storage",
-    "scripting"
+    "storage"
   ],
   "host_permissions": [
     "https://*.youtube.com/"
